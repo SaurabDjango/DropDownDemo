@@ -1,0 +1,33 @@
+<form method="post" id="EmployeeForm" data-branches-url="{% url 'ajax_load_branches' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      
+      {{ form.as_p }}
+    </table>
+    <button type="submit">Save</button>
+    
+  </form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $("#id_company").change(function () {
+
+        var url = $("#EmployeeForm").attr("data-branches-url");
+        var companyId = $(this).val();
+
+        $.ajax({
+
+            url: url,
+            data: {
+                'company':companyId
+            },
+            success: function (data) {
+
+                $("#id_department").html(data);
+            }
+        });
+    });
+</script>
+
+
