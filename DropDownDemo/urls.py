@@ -21,4 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.ModelCreateView.as_view(),name='list'),
     path('ajax/load-branches/', views.load_branches, name='ajax_load_branches'),
+    path('users/',include('users.urls')),
+    path('project/',include('project.urls')),
+    path('formdata', views.load_branches, name='formdata'),
+    
 ]
