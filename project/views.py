@@ -23,11 +23,10 @@ def table(request,pk=id):
     prox = project.objects.filter(company__id=comname,employee__id__in=emp)
     print(">>>>>>>>>>>>>>>>>>>>>>",prox)
     context = {
-
         'com':com,
         'dep':dep,
         'emp':emp,
         'pro':pro,
         'prox':prox,
     }
-    return render(request,'table.html',context) 
+    return render(request,'table.html',context)
